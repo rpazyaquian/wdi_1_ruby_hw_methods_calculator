@@ -84,11 +84,17 @@ def menu
     y = get_number
     puts "#{x} to the power of #{y} is #{Calculator.exponent(x, y)}"
   elsif operation_choice == 'q'
-    puts "Not implemented yet."
+    puts "Square:"
+    x = get_number
+    puts "#{x} squared is #{Calculator.square(x)}"
   elsif operation_choice == 'c'
-    puts "Not implemented yet."
+    puts "Cube:"
+    x = get_number
+    puts "#{x} cubed is #{Calculator.cube(x)}"
   elsif operation_choice == 'r'
-    puts "Not implemented yet."
+    puts "Square root of:"
+    x = get_number
+    puts "The square root of #{x} is #{Calculator.root(x)}"
   else
     puts "Sorry, that's not a valid option."
   end
