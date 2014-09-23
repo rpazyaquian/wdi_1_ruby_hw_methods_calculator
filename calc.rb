@@ -51,7 +51,7 @@ def menu
     '(c)ube',
     '(r)oot'
   ]
-  puts "hello, please choose an option:\n#{options.join(", ")}"
+  puts "Hello, please choose an option:\n#{options.join(", ")}"
   operation_choice = gets.chomp
   if operation_choice == 'a'
     puts "Add:"
