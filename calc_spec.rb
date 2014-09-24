@@ -1,6 +1,6 @@
 # yes, this is exactly what you think it is.
 
-require_relative 'calc'
+require_relative 'lib/calc'
 
 describe Calculator do
 

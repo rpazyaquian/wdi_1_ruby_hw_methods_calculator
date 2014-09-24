@@ -1,40 +1,4 @@
-# Your code goes here
-
-class Calculator
-
-  def self.add(x, y)
-    x + y
-  end
-
-  def self.subtract(x, y)
-    x - y
-  end
-
-  def self.multiply(x, y)
-    x * y
-  end
-
-  def self.divide(x, y)
-    x / y
-  end
-
-  def self.exponent(x, y)
-    x**y
-  end
-
-  def self.square(x)
-    x**2
-  end
-
-  def self.cube(x)
-    x**3
-  end
-
-  def self.root(x)
-    Math.sqrt(x)
-  end
-
-end
+require_relative 'lib/calc'
 
 def get_number
   gets.chomp.to_f
@@ -51,53 +15,31 @@ def menu
     '(c)ube',
     '(r)oot'
   ]
+  translations = {
+    a: 'add',
+    s: 'subtract',
+    m: 'multiply',
+    d: 'divide',
+    e: 'exponent',
+    q: 'square',
+    c: 'cube',
+    r: 'root'
+  }
   puts "Hello, please choose an option:\n#{options.join(", ")}"
   operation_choice = gets.chomp
-  if operation_choice == 'a'
-    puts "Add:"
-    x = get_number
-    puts "to:"
-    y = get_number
-    puts "#{x} plus #{y} is #{Calculator.add(x, y)}"
-  elsif operation_choice == 's'
-    puts "Subtract:"
-    y = get_number
-    puts "from:"
-    x = get_number
-    puts "#{x} minus #{y} is #{Calculator.subtract(x, y)}"
-  elsif operation_choice == 'm'
-    puts "Multiply:"
-    x = get_number
-    puts "by:"
-    y = get_number
-    puts "#{x} times #{y} is #{Calculator.multiply(x, y)}"
-  elsif operation_choice == 'd'
-    puts "Divide:"
-    x = get_number
-    puts "by:"
-    y = get_number
-    puts "#{x} divided by #{y} is #{Calculator.divide(x, y)}"
-  elsif operation_choice == 'e'
-    puts "Raise:"
-    x = get_number
-    puts "to the power of:"
-    y = get_number
-    puts "#{x} to the power of #{y} is #{Calculator.exponent(x, y)}"
-  elsif operation_choice == 'q'
-    puts "Square:"
-    x = get_number
-    puts "#{x} squared is #{Calculator.square(x)}"
-  elsif operation_choice == 'c'
-    puts "Cube:"
-    x = get_number
-    puts "#{x} cubed is #{Calculator.cube(x)}"
-  elsif operation_choice == 'r'
-    puts "Square root of:"
-    x = get_number
-    puts "The square root of #{x} is #{Calculator.root(x)}"
-  else
-    puts "Sorry, that's not a valid option."
+
+  if not translations.has_key?(operation_choice.to_sym)
+    puts "Sorry, I don't know that operation."
+    exit(0)
   end
+
+  puts "First number:"
+  x = get_number
+  puts "Second number (or blank if not necessary):"
+  y = get_number
+
+  puts "Your result is: #{Calculator.method(translations[operation_choice.to_sym]).(x, y)}"
+
 end
 
 menu
